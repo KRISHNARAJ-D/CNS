@@ -28,7 +28,50 @@ becomes C. To change a message back, each letter is replaced by the one three be
 
 
 PROGRAM :-
+```
+Register Number : 212222230070
+Name : Krishnaraj D
+```
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main() {
+ char message[100]; // Array to store the message
+ int key;
+ printf("Enter the message to encrypt: ");
+ fgets(message, sizeof(message), stdin); // Read input from the user
+ // Remove trailing newline from fgets
+ message[strcspn(message, "\n")] = '\0';
+ printf("Enter the Caesar Cipher key (an integer): ");
+ scanf("%d", &key); // Read the key from the user
+ // Encryption logic (directly in main)
+ for (int i = 0; message[i] != '\0'; i++) {
+ char c = message[i];
+ if (c >= 'A' && c <= 'Z') {
+ message[i] = ((c - 'A' + key) % 26 + 26) % 26 + 'A';
+ } else if (c >= 'a' && c <= 'z') {
+ message[i] = ((c - 'a' + key) % 26 + 26) % 26 + 'a';
+ }
+ }
+ printf("Encrypted Message: %s\n", message);
+ // Decryption logic (directly in main)
+ for (int i = 0; message[i] != '\0'; i++) {
+ char c = message[i];
+ if (c >= 'A' && c <= 'Z') {
+ message[i] = ((c - 'A' - key) % 26 + 26) % 26 + 'A';
+ } else if (c >= 'a' && c <= 'z') {
+ message[i] = ((c - 'a' - key) % 26 + 26) % 26 + 'a';
+ }
+ }
+ printf("Decrypted Message: %s\n", message);
+ return 0;
+}
+```
 
 
+## OUTPUT :-
+![image](https://github.com/user-attachments/assets/2bbcf2d0-5f6a-4cbb-9470-2c8b61c9659e)
 
-OUTPUT :-
+## RESULT:
+The program is executed successfully
